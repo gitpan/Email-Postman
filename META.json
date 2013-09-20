@@ -4,7 +4,7 @@
       "Jerome Eteve <jerome.eteve@gmail.com>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.112621",
+   "generated_by" : "ExtUtils::MakeMaker version 6.72, CPAN::Meta::Converter version 2.120351",
    "license" : [
       "perl_5"
    ],
@@ -23,12 +23,13 @@
       "build" : {
          "requires" : {
             "MIME::Parser" : "5.502",
-            "Test::More" : 0
+            "Test::MockObject" : "1.2",
+            "Test::More" : "0"
          }
       },
       "configure" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : 0
+            "ExtUtils::MakeMaker" : "0"
          }
       },
       "runtime" : {
@@ -44,5 +45,5 @@
       }
    },
    "release_status" : "stable",
-   "version" : "0.01"
+   "version" : "0.02"
 }
