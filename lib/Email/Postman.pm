@@ -47,17 +47,17 @@ Email::Postman - Send multirecipient emails to the world.
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub deliver{
   my ($self, $email) = @_;
 
   ## Make sure we have an email abstract.
-  unless( ( ref($email) // '' ) eq 'Email::Abstract' ){
+  unless( ( ref($email) || '' ) eq 'Email::Abstract' ){
     $email = Email::Abstract->new($email);
   }
   ## We have an email abstract.
@@ -118,7 +118,7 @@ sub _deliver_email_to{
 
   my $report = Email::Postman::Report->new({ about_email => $recpt->address() });
 
-  my @mx = $res->mx($recpt->host());
+  my @mx = Net::DNS::mx( $res, $recpt->host());
   unless( @mx ){
     $report->set_failure_message("No MX host could be found for host '".$recpt->host()."'");
     return $report;
@@ -282,5 +282,3 @@ See http://dev.perl.org/licenses/ for more information.
 
 
 =cut
-
-1; # End of Email::Postman
